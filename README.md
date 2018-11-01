@@ -51,11 +51,11 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
     * example:  `html_slides/123_some_topic/labs/00_lab1.html`
 *  Troubleshooting:  See what files are being included by running a dry run:
     * `http://ansible.red/deck-ansible/?dryrun`
-    * other variables that can be fed into the URL:
-        * `person=someone-name` (if that person has a preferences file, context will switch to it)
-        * `labs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
-        * `nolabs` (no value is required - opposite of `labs`, this variable forces deck-only display mode and will not show the labs
-        * without `labs` or `nolabs` the default behavior is to show labs at the end of each section.
+* Changing other dynamic aspects of the content via URL:
+    * `person=shadd` (if that person has a preferences file, context will switch to it.  This parallels and overrides the variable determined by a FQDN of `shadd.ansible.red` )
+    * `labs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
+    * `nolabs` (no value is required - opposite of `labs`, this variable forces deck-only display mode and will not show the labs
+    * without `labs` or `nolabs` the default behavior is to show labs at the end of each section.
 
 ## Notes
   - index.php includes a lot of stuff as dynamic files from the html_slides directory

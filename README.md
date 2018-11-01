@@ -8,8 +8,18 @@ This project is the "Ansible Red" deck HTML content.  Optionally, a daemon will 
 
 
 ## Example Playbooks
-Here's an example of how you could launch this role
+Here's an example of how you could launch this role and deploy the PHP daemon to start on port `php_port`:
+<pre>
+ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
+</pre>
 
+Here's an example of how you could launch this role and and not start the PHP daemon (only synch the content)
+<pre>
+ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml --skip-tags=phpdaemon
+</pre>
+
+
+## Here's an example of the playbook
 
 <pre>
 ---

@@ -53,9 +53,11 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
     * `http://ansible.red/deck-ansible/?dryrun`
 * Changing other dynamic aspects of the content via URL:
     * `person=shadd` (if that person has a preferences file, context will switch to it.  This parallels and overrides the variable determined by a FQDN of `shadd.ansible.red` )
-    * `labs` :: `http://ansible.red/deck-ansible/?nolabs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
+    * `labs` :: `http://ansible.red/deck-ansible/?labs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
     * `nolabs` :: `http://ansible.red/deck-ansible/?nolabs` (no value is required - opposite of `labs`, this variable forces deck-only display mode and will not show the labs
     * without `labs` or `nolabs` the default behavior is to show labs at the end of each section.
+    * `force` :: `http://ansible.red/deck-ansible/?force` (no value is required).  This can be used on its own or in combination with labs, nolabs, person as: `?person=shadd&nolabs&force`.  This parameter shows the status on the HTML output to display the mode. Output is something like:  "LAB LIMIT 2 = No Labs, only deck"
+
 
 ## Notes
   - index.php includes a lot of stuff as dynamic files from the html_slides directory

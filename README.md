@@ -53,8 +53,8 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
     * `http://ansible.red/deck-ansible/?dryrun`
 * Changing other dynamic aspects of the content via URL:
     * `person=shadd` (if that person has a preferences file, context will switch to it.  This parallels and overrides the variable determined by a FQDN of `shadd.ansible.red` )
-    * `labs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
-    * `nolabs` (no value is required - opposite of `labs`, this variable forces deck-only display mode and will not show the labs
+    * `labs` :: `http://ansible.red/deck-ansible/?nolabs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
+    * `nolabs` :: `http://ansible.red/deck-ansible/?nolabs` (no value is required - opposite of `labs`, this variable forces deck-only display mode and will not show the labs
     * without `labs` or `nolabs` the default behavior is to show labs at the end of each section.
 
 ## Notes

@@ -56,7 +56,7 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
     * `labs` :: `http://ansible.red/deck-ansible/?labs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
     * `nolabs` :: `http://ansible.red/deck-ansible/?nolabs` (no value is required - opposite of `labs`, this variable forces deck-only display mode and will not show the labs
     * without `labs` or `nolabs` the default behavior is to show labs at the end of each section.
-    * `force` :: `http://ansible.red/deck-ansible/?force` (no value is required).  This can be used on its own or in combination with labs, nolabs, person as: `?person=shadd&nolabs&force`.  This parameter shows the status on the HTML output to display the mode. Output is something like:  "LAB LIMIT 2 = No Labs, only deck"
+    * `force` :: `http://ansible.red/deck-ansible/?force` (no value is required).  This can be used on its own or in combination with labs, nolabs, person as: `?person=shadd&nolabs&force`.  This parameter shows the status on the HTML output to display the mode. Output is something like:  "LAB LIMIT 2 = No Labs, only deck" on the very top white line of the deck throughout the entire presentation.
 
 
 ## Notes

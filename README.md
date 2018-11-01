@@ -46,6 +46,11 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
   - Inside `index.php` there are variables for the github star and download counts... probably should be converted to vars in defaults or `extra_vars` params
   - Certain presenters have requested dynamic ways to exclude certain sections (exclude entire dir `010_topic_that_bores_my_audience`)
 
+## Easter Eggs
+  - Not implemented, but capable:  Each directory in `html_slides` can have a `labs` directory.  Slides in this dir will automatically be presented as LABS at the end of each section (numbered directory) and presented with a gray intro slide when the deck advances past the topic section.
+  -- example:  `html_slides/123_some_topic/labs/00_lab1.html`
+
+
 ## Notes
   - index.php includes a lot of stuff as dynamic files from the html_slides directory
   - any file or dir inside `html_slides` can be excluded by starting it with an underscore

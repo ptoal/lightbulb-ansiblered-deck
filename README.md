@@ -41,18 +41,18 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml --skip-tags=phpdaemon
 </pre>
 
 
-## Troubleshooting & Improvements
-
-- Not enough testing yet
+## Stuff still needing to be done
+  - Inside `index.php` there are variables for the github star and download counts... probably should be converted to vars in defaults or `extra_vars` params
+  - Certain presenters have requested dynamic ways to exclude certain sections (exclude entire dir `010_topic_that_bores_my_audience`)
 
 ## Notes
   - index.php includes a lot of stuff as dynamic files from the html_slides directory
-  - any file or dir inside html_slides can be excluded by starting it with an underscore
-  - example:  html_slides/_000_skipping_this_section
-  - example:  html_slides/001_not_kipping_this_section/_skipping_this_slide.html
+  - any file or dir inside `html_slides` can be excluded by starting it with an underscore
+  - example:  `html_slides/_000_skipping_this_section`
+  - example:  `html_slides/001_not_kipping_this_section/_skipping_this_slide.html`
 
 ## Author
-  - Adapted from the original lightbulb workshop deck, split into dynamic individual slides
+  - Adapted by [Kevin Holmes](http://GoKEV.com/) from the original lightbulb workshop deck, split into dynamic individual slides
 
 ## Changelog
   - This project was first committed November 1, 2018 by [Kevin Holmes](http://GoKEV.com/).

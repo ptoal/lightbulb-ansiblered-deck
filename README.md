@@ -10,12 +10,13 @@ This project is the "Ansible Red" deck HTML content.  Optionally, a daemon will 
 ## Example Playbooks
 Here's an example of how you could launch this role and deploy the PHP daemon to start on port `php_port`:
 <pre>
-ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
+ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml --tags=phpdaemon
 </pre>
 
-Here's an example of how you could launch this role and and not start the PHP daemon (only synch the content)
+Here's an example of how you could launch this role and and not start the PHP daemon (only synch the content).
+The default method uses `tags: [ 'never', 'phpdaemon' ]` and only includes `phpdaemon` components when specifically invoked.  Therefore, the default nature of this role will ONLY synch content and not start the PHP web service.
 <pre>
-ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml --skip-tags=phpdaemon
+ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml 
 </pre>
 
 

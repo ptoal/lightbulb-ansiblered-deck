@@ -1,0 +1,76 @@
+---
+# tasks file for ansiblered-deck-ansible---
+- name: Assure PHP is installed for deck and dynamic content
+  yum:
+    name: php
+    state: latest
+
+- name: Copy PHP service file
+  template:
+    src: templates/ansible-php-deck.service
+    dest: /usr/lib/systemd/system/ansible-php-deck.service
+    owner: root
+    group: wheel
+    mode: 0644
+  tags: phpdaemon
+
+- name: Copy PHP script file
+  template:
+    src: templates/ansible-php-deck.sh
+    dest: /root/ansible-php-deck.sh
+    owner: root
+    group: wheel
+    mode: 0755
+  tags: phpdaemon
+
+- name: Assure our preferences files directory exists
+  file:
+    path: "{{ workshop_web_path }}/deck-ansible/prefs/"
+    state: directory
+  tags:
+  - content
+  - deck-ansible
+
+- name: deploy the PHP default preferences file template for the slide deck
+  template:
+    src: templates/deck-ansible_prefs_default.prefs.php
+    dest: "{{ workshop_web_path }}/deck-ansible/prefs/default.prefs.php"
+    mode: 0644
+    backup: yes
+  tags:
+  - content
+  - deck-ansible
+
+- name: synchronize html basics deck
+  synchronize:
+    src: files/deck-ansible/
+    dest: "{{ workshop_web_path }}/deck-ansible/"
+    delete: yes
+    recursive: yes
+    rsync_opts:
+      - "--no-motd"
+      - "--exclude=prefs/default.prefs.php"
+  tags:
+  - content
+  - deck-ansible
+
+### Ansible SELinux module does not appear to work recursively so we use ugly raw
+- name: "Set selinux context recursively httpd_sys_rw_content_t {{ workshop_web_path }}"
+  shell: "chcon -R -t httpd_sys_rw_content_t {{ workshop_web_path }}"
+  changed_when: no
+  failed_when: no
+
+- name: Start service ansible-php-deck, if not started
+  service:
+    name: ansible-php-deck
+    state: started
+  tags: phpdaemon
+
+- name: Enable service ansible-php-deck, if not started
+  service:
+    name: ansible-php-deck
+    enabled: yes
+  tags: phpdaemon
+
+
+

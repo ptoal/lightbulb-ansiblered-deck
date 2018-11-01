@@ -1,10 +1,25 @@
 <?php
 
-$workshop_image = '{{ workshop_image }}';
-$workshop_name = '{{ workshop_name }}';
-$workshop_presenter = '{{ workshop_presenter }}';
-$workshop_title = '{{ workshop_title }}';
-$workshop_message = '{{ workshop_message }}';
+$workshop_image =<<<ALLDONE
+{{ workshop_image }}
+ALLDONE;
+
+$workshop_name =<<<ALLDONE
+{{ workshop_name }}
+ALLDONE;
+
+$workshop_presenter =<<<ALLDONE
+{{ workshop_presenter }}
+ALLDONE;
+
+$workshop_title =<<<ALLDONE
+{{ workshop_title }}
+ALLDONE;
+
+$workshop_message =<<<ALLDONE
+{{ workshop_message }}
+ALLDONE;
+
 $terminal_prompt = '[ansible@redhat] $';
 
 ?>

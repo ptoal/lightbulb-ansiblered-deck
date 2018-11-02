@@ -47,14 +47,19 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
 
 
 ## Stuff still needing to be done
-  - Inside `index.php` there are variables for the github star and download counts... probably should be converted to vars in defaults or `extra_vars` params
-  - Certain presenters have requested dynamic ways to exclude certain sections (exclude entire dir `010_topic_that_bores_my_audience`)
+* Inside `index.php` there are variables for the github star and download counts... probably should be converted to vars in defaults or `extra_vars` params
+* Certain presenters have requested dynamic ways to exclude certain sections (exclude entire dir `010_topic_that_bores_my_audience`)
+* The HTML ID tags can be manually (accidentally) set to the same name.  This has commonly bitten me when duplicating a slide as a starting point and then forgetting to change the ID.  At some point, these should be dynamically generated per slide.
+    * `<section id="<?=$pretty_html_dir?>">` or something similar would make a more unique and less likely duplicated tag.
+
 
 ## Easter Eggs
-*  Not implemented, but capable:  Each directory in `html_slides` can have a `labs` directory.  Slides in this dir will automatically be presented as LABS at the end of each section (numbered directory) and presented with a gray intro slide when the deck advances past the topic section.
+* Not implemented, but capable:  Each directory in `html_slides` can have a `labs` directory.  Slides in this dir will automatically be presented as LABS at the end of each section (numbered directory) and presented with a gray intro slide when the deck advances past the topic section.
     * example:  `html_slides/123_some_topic/labs/00_lab1.html`
-*  Troubleshooting:  See what files are being included by running a dry run:
+
+* Troubleshooting:  See what files are being included by running a dry run:
     * `http://ansible.red/deck-ansible/?dryrun`
+
 * Changing other dynamic aspects of the content via URL:
     * `person=shadd` (if that person has a preferences file, context will switch to it.  This parallels and overrides the variable determined by a FQDN of `shadd.ansible.red` )
     * `labs` :: `http://ansible.red/deck-ansible/?labs` (no value is required - simply passing this empty variable forces labs-only display mode and will not show the deck
@@ -64,10 +69,15 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
 
 
 ## Notes
-  - index.php includes a lot of stuff as dynamic files from the html_slides directory
-  - any file or dir inside `html_slides` can be excluded by starting it with an underscore
-  - example:  `html_slides/_000_skipping_this_section`
-  - example:  `html_slides/001_not_kipping_this_section/_skipping_this_slide.html`
+* index.php includes a lot of stuff as dynamic files from the html_slides directory
+* Any file or dir inside `html_slides` can be excluded by starting it with an underscore
+    * example:  `html_slides/_000_skipping_this_section`
+    * example:  `html_slides/001_not_kipping_this_section/_skipping_this_slide.html`
+
+* Lab slides can also include some variables defined by parsing the directory names.  Take a look at this file for a better understanding and see how the `<?=$varible_name?>` php tags are used:
+    * `html_slides/080_Tasks/_labs/00_Tasks_Labs.html`
+    * all labs (at this point) are committed with underscore prepending the directory name and won't publish until that dir is changed to `labs`.
+
 
 ## Author
   - Adapted by [Kevin Holmes](http://GoKEV.com/) from the original lightbulb workshop deck, split into dynamic individual slides

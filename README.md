@@ -49,7 +49,7 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
 ## Stuff still needing to be done
 * Inside `index.php` there are variables for the github star and download counts... probably should be converted to vars in defaults or `extra_vars` params
 * Certain presenters have requested dynamic ways to exclude certain sections (exclude entire dir `010_topic_that_bores_my_audience`)
-* The HTML ID tags can be manually (accidentally) set to the same name.  This has commonly bitten me when duplicating a slide as a starting point and then forgetting to change the ID.  At some point, these should be dynamically generated per slide.
+* The HTML ID tags can be manually (accidentally) set to the same name.  This has commonly bitten me when duplicating a slide as a starting point and then forgetting to change the ID.  At some point, these should be dynamically generated per slide.  Two slides with the same ID cause an issue where advancing forward / backward can navigate you all the way back to the first instance of the slide and really make an awkward presentation.
     * `<section id="<?=$pretty_html_dir?>">` or something similar would make a more unique and less likely duplicated tag.
 
 

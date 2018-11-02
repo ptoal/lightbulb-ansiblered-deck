@@ -8,13 +8,17 @@ This project is the "Ansible Red" deck HTML content.  Optionally, a daemon will 
 
 
 ## Example Playbooks
-Here's an example of how you could launch this role and deploy the PHP daemon to start on port `php_port`:
+Here's an example of how you could launch this role and deploy the PHP daemon to start on port `php_port` and also place the php redirect in the main `{{ workshop_web_path }}`` directory:
 <pre>
-ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml --tags=phpdaemon
+## both of these example tags default to "never" and will not execute
+## unless you explicitly call them at launch time. Therefore, the default
+## nature of this role will ONLY synch content and not start the PHP web
+## service or place the HTML redirect in web root unless run with these tags:
+
+ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml --tags "phpdaemon,phpredirect"
 </pre>
 
 Here's an example of how you could launch this role and and not start the PHP daemon (only synch the content).
-The default method uses `tags: [ 'never', 'phpdaemon' ]` and only includes `phpdaemon` components when specifically invoked.  Therefore, the default nature of this role will ONLY synch content and not start the PHP web service.
 <pre>
 ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml 
 </pre>
@@ -69,6 +73,6 @@ ansible-playbook -i ec2.hosts GoKEV-lab-provision.yml
   - Adapted by [Kevin Holmes](http://GoKEV.com/) from the original lightbulb workshop deck, split into dynamic individual slides
 
 ## Changelog
-  - This project was first committed November 1, 2018 by [Kevin Holmes](http://GoKEV.com/).
-
+  - 2018-11-01 This project was first committed November 1, 2018 by [Kevin Holmes](http://GoKEV.com/).
+  - 2018-11-02 Added an `index.php` file to deploy to web root, redirecting to `/deck-ansible` directory when called via tag `phpredirect`
 

@@ -4,7 +4,7 @@
 
 $module_count="2100+";
 $gihub_stars="33,500+";
-$download_permonth="50,000+";
+$download_permonth="500,000+";
 
 $dry_run = (isset($_GET['dryrun']) ? 1 : 0);
 

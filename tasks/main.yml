@@ -38,7 +38,7 @@
 - name: Copy index.php to root dir
   template:
     src: templates/index_redirect.php
-    dest: {{ workshop_web_path }}/index.php
+    dest: "{{ workshop_web_path }}/index.php"
     owner: root
     group: wheel
     mode: 0644

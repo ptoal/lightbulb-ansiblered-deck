@@ -2,8 +2,8 @@
 
 // I updated this here to be a variable so we can easily change it in other places in the deck, dynamically
 
-$module_count="2100+";
-$gihub_stars="33,500+";
+$module_count="2800+";
+$gihub_stars="37,500+";
 $download_permonth="500,000+";
 
 $dry_run = (isset($_GET['dryrun']) ? 1 : 0);
